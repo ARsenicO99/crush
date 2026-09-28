@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Anushka 🌹</title>
+  <meta name="description" content="A little something for someone truly special.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌹</text></svg>">
+</head>
+<body>
+
+  <!-- Floating Petals -->
+  <div class="petals-container" id="petals"></div>
+
+  <!-- Navbar (always visible) -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-logo" onclick="navigateTo('home')">
+      For <span>Anushka</span>
+    </div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#" data-page="home" onclick="navClick(event, 'home')">Home</a></li>
+      <li><a href="#" data-page="gallery" onclick="navClick(event, 'gallery')">Gallery</a></li>
+      <li><a href="#" data-page="songs" onclick="navClick(event, 'songs')">Songs</a></li>
+      <li><a href="#" data-page="praise" onclick="navClick(event, 'praise')">You</a></li>
+      <li><a href="#" data-page="quotes" onclick="navClick(event, 'quotes')">Us</a></li>
+      <li><a href="#" data-page="chance" onclick="navClick(event, 'chance')">One Chance</a></li>
+      <li><a href="#" data-page="valentine" onclick="navClick(event, 'valentine')">Valentine</a></li>
+    </ul>
+    <div class="nav-toggle" id="navToggle" onclick="toggleNav()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </nav>
+
+  <!-- ============================================ -->
+  <!-- PAGE: HOME                                    -->
+  <!-- ============================================ -->
+  <main class="page active" id="page-home">
+    <section class="hero">
+      <div class="hero-content">
+        <span class="hero-badge">✦ A Letter In Code ✦</span>
+        <h1>
+          Because a <span class="highlight">crush</span> like you<br>
+          is worth every effort
+        </h1>
+        <p class="hero-subtitle">
+          This isn't just a website. It's everything I couldn't say right,<br>
+          written the only way I know — with all my heart.
+        </p>
+        <button class="hero-cta" onclick="navigateTo('gallery')">
+          Begin the journey
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+        </button>
+      </div>
+      <div class="scroll-indicator" onclick="navigateTo('gallery')">
+        <span>Explore</span>
+        <div class="scroll-line"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================================ -->
+  <!-- PAGE: GALLERY                                 -->
+  <!-- ============================================ -->
+  <main class="page" id="page-gallery">
+    <section class="page-section">
+      <div class="section-header">
+        <span class="section-label">✦ Gallery</span>
+        <h2 class="section-title">Every Photo, A Masterpiece</h2>
+        <p class="section-subtitle">Because some people don't need a filter — they are the filter</p>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item" onclick="openLightbox(this)">
+          <img src="images/anushka-bhimtal.jpg" alt="Anushka at Bhimtal" loading="lazy">
+          <span class="caption">Bhimtal never looked this good ✨</span>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+          <img src="images/anushka-closeup.jpg" alt="Anushka closeup" loading="lazy">
+          <span class="caption">That effortless grace 🖤</span>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+          <img src="images/anushka-cafe.jpg" alt="Anushka at cafe" loading="lazy">
+          <span class="caption">Warm chaos, indeed 🌸</span>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+          <img src="images/anushka-lehenga.jpg" alt="Anushka in lehenga" loading="lazy">
+          <span class="caption">Traditional & stunning 💙</span>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+          <img src="images/anushka-mountains.jpg" alt="Anushka in mountains" loading="lazy">
+          <span class="caption">Mountains have competition 🏔️</span>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+          <img src="images/anushka-pink-top.jpeg" alt="Anushka casual" loading="lazy">
+          <span class="caption">Pretty in pink 🎀</span>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+          <img src="images/anushka-saree.jpg" alt="Anushka in saree" loading="lazy">
+          <span class="caption">Elegance personified 🪷</span>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+          <img src="images/anushka-casual.jpeg" alt="Anushka casual selfie" loading="lazy">
+          <span class="caption">That smile though 💕</span>
+        </div>
+      </div>
+      <div class="page-nav-hint">
+        <button class="nav-hint-btn" onclick="navigateTo('songs')">Next: Songs That Remind Me Of You →</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Lightbox (global) -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+    <img id="lightboxImg" src="" alt="Enlarged photo">
+  </div>
+
+  <!-- Video Lightbox (global) -->
+  <div class="lightbox" id="videoLightbox" onclick="closeVideoLightbox(event)">
+    <button class="lightbox-close" onclick="closeVideoLightbox()">✕</button>
+    <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; width: 90%; max-width: 800px; margin: auto; top: 50%; transform: translateY(-50%);">
+      <iframe id="youtubePlayer" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);"></iframe>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- PAGE: SONGS                                   -->
+  <!-- ============================================ -->
+  <main class="page" id="page-songs">
+    <section class="page-section">
+      <div class="section-header">
+        <span class="section-label">✦ Our Playlist</span>
+        <h2 class="section-title">Songs That Remind Me Of You</h2>
+        <p class="section-subtitle">Every lyric hits different when someone's on your mind</p>
+      </div>
+      <div class="songs-grid">
+        <div class="song-card" onclick="playVideo('kPhpHvnnn0Q')">
+          <span class="song-number">01</span>
+          <div class="song-divider"></div>
+          <div class="song-info">
+            <div class="song-title">Perfect</div>
+            <div class="song-quote">"If I had to propose to you as a surprise, this would be the background song"</div>
+          </div>
+          <div class="song-play-icon">▶</div>
+        </div>
+        <div class="song-card" onclick="playVideo('9udS0mpi1L4')">
+          <span class="song-number">02</span>
+          <div class="song-divider"></div>
+          <div class="song-info">
+            <div class="song-title">Udaarian</div>
+            <div class="song-quote">"Do you remember I told you, you came in my dream? It felt like this."</div>
+          </div>
+          <div class="song-play-icon">▶</div>
+        </div>
+        <div class="song-card" onclick="playVideo('ZJ5HxNWYDtM')">
+          <span class="song-number">03</span>
+          <div class="song-divider"></div>
+          <div class="song-info">
+            <div class="song-title">Aaj Se Teri</div>
+            <div class="song-quote">"From today, all my joys are yours"</div>
+          </div>
+          <div class="song-play-icon">▶</div>
+        </div>
+        <div class="song-card" onclick="playVideo('ZL1Y7B8mMeY')">
+          <span class="song-number">04</span>
+          <div class="song-divider"></div>
+          <div class="song-info">
+            <div class="song-title">Jahaan Tum Ho</div>
+            <div class="song-quote">"Everything feels right when you are there"</div>
+          </div>
+          <div class="song-play-icon">▶</div>
+        </div>
+        <div class="song-card" onclick="playVideo('Cb6wuzOurPc')">
+          <span class="song-number">05</span>
+          <div class="song-divider"></div>
+          <div class="song-info">
+            <div class="song-title">Tum Se Hi</div>
+            <div class="song-quote">"Because every morning starts with you on my mind"</div>
+          </div>
+          <div class="song-play-icon">▶</div>
+        </div>
+        <div class="song-card" onclick="playVideo('mQiiw7uRngk')">
+          <span class="song-number">06</span>
+          <div class="song-divider"></div>
+          <div class="song-info">
+            <div class="song-title">Tera Ban Jaunga</div>
+            <div class="song-quote">"If you just say yes, I'll be yours"</div>
+          </div>
+          <div class="song-play-icon">▶</div>
+        </div>
+        <div class="song-card" onclick="playVideo('nCD2hj6zJEc')">
+          <span class="song-number">07</span>
+          <div class="song-divider"></div>
+          <div class="song-info">
+            <div class="song-title">Dheere Dheere Se</div>
+            <div class="song-quote">"Slowly but surely, you became my favorite thought"</div>
+          </div>
+          <div class="song-play-icon">▶</div>
+        </div>
+      </div>
+      <div class="page-nav-hint">
+        <button class="nav-hint-btn" onclick="navigateTo('praise')">Next: About You →</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================================ -->
+  <!-- PAGE: PRAISE                                  -->
+  <!-- ============================================ -->
+  <main class="page" id="page-praise">
+    <section class="page-section">
+      <div class="section-header">
+        <span class="section-label">✦ About You</span>
+        <h2 class="section-title">Why I Like You So Much</h2>
+      </div>
+      <div class="praise-container">
+        <div class="praise-card">
+          <span class="praise-icon">✨</span>
+          <h3>Effortlessly Beautiful</h3>
+          <p>You just have this natural charm. Whether it's a random selfie or you're all dressed up, you always manage to look stunning without even trying too hard.</p>
+        </div>
+        <div class="praise-card">
+          <span class="praise-icon">🌸</span>
+          <h3>The Cutest Smile</h3>
+          <p>You honestly have the cutest smile I have ever seen. It lights up your whole face, and it's absolutely impossible not to smile back when I see it.</p>
+        </div>
+        <div class="praise-card">
+          <span class="praise-icon">😄</span>
+          <h3>That Sense Of Humour</h3>
+          <p>Conversations with you are genuinely never boring. You have this great ability to be witty and make people laugh effortlessly. It's a rare trait to find.</p>
+        </div>
+        <div class="praise-card">
+          <span class="praise-icon">⚖️</span>
+          <h3>The Sharpest Mind</h3>
+          <p>It's really cool to see someone so driven. From our deep political discussions to how strongly you supported the Jantar Mantar protests with such conviction, your sharp mind is honestly one of your best qualities.</p>
+        </div>
+        <div class="praise-card">
+          <span class="praise-icon">🔥</span>
+          <h3>Ambition That Inspires</h3>
+          <p>You're not just going through the motions, you're actually building your own path. Seeing your focus and determination while aiming for that Grade A government job is genuinely so admirable to watch.</p>
+        </div>
+        <div class="praise-card">
+          <span class="praise-icon">💫</span>
+          <h3>Just A Great Vibe</h3>
+          <p>You're a great mix of smart, funny, driven, and kind. Being around you just brings good energy, and it's something I really appreciate.</p>
+        </div>
+      </div>
+      <div class="page-nav-hint">
+        <button class="nav-hint-btn" onclick="navigateTo('quotes')">Next: Our Quotes →</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================================ -->
+  <!-- PAGE: QUOTES                                  -->
+  <!-- ============================================ -->
+  <main class="page" id="page-quotes">
+    <section class="page-section page-dark">
+      <div class="section-header">
+        <span class="section-label">✦ Our Quotes</span>
+        <h2 class="section-title">Things Only We Understand</h2>
+        <p class="section-subtitle">Our little inside jokes that no one else needs to get</p>
+      </div>
+      <div class="quotes-container">
+        <div class="quote-block">
+          <div class="quote-hindi">"Vakeel se Behas — Zindagi Tehas Nehas"</div>
+          <div class="quote-english">I promise, I'll never argue with you again. You're the advocate here — I'll gladly lose every argument if it means I get to keep you. 😅⚖️</div>
+          <span class="quote-emoji">🤝</span>
+        </div>
+        <div class="quote-block">
+          <div class="quote-hindi">"Vakeel ka Chakkar, Maut se Takkar"</div>
+          <div class="quote-english">And I'd still choose this. Every single time. No hesitation. Because some risks are worth every bit of the chaos. 🖤</div>
+          <span class="quote-emoji">💀❤️</span>
+        </div>
+        <div class="quote-block">
+          <div class="quote-hindi">"You know why Joheirry Mola became Miss World 2026?"</div>
+          <div class="quote-english">Because you didn't participate. That's it. That's the whole reason. The world got lucky this time. 👑</div>
+          <span class="quote-emoji">🌍👸</span>
+        </div>
+      </div>
+      <div class="page-nav-hint">
+        <button class="nav-hint-btn light" onclick="navigateTo('chance')">Next: One More Chance →</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================================ -->
+  <!-- PAGE: ONE MORE CHANCE                         -->
+  <!-- ============================================ -->
+  <main class="page" id="page-chance">
+    <section class="page-section page-chance-section">
+      <div class="chance-container">
+        <div class="section-header">
+          <span class="section-label">✦ From The Heart</span>
+          <h2 class="section-title">No More Words. Just Actions.</h2>
+        </div>
+        <div class="chance-letter">
+          <p>
+            Anushka, you once told me that I only ever gave you words, and that my actions never showed it.
+          </p>
+          <br>
+          <p>
+            This is my first real effort to show you, not just tell you, how much you mean to me. And I promise you, this is just the beginning.
+          </p>
+          <br>
+          <p>
+            Give me one more chance and let's see how things go this time. I assure you, I won't disappoint you.
+          </p>
+          <div class="letter-signature">Someone who means every pixel of this ❤️</div>
+        </div>
+
+        <h3 class="chance-question">So, Anushka... one more chance?</h3>
+
+        <div class="chance-buttons" id="chanceButtons">
+          <button class="btn-yes" id="btnYes" onclick="handleYes()">Yes 💕</button>
+          <button class="btn-no" id="btnNo" onmouseover="dodgeButton(this)" onclick="handleNoClick()">No</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Yes Overlay (global) -->
+  <div class="yes-overlay" id="yesOverlay">
+    <h2>Yaayyy!! 🎉</h2>
+    <p>Thank you, Anushka. I promise you won't regret this, ever. This is the beginning of something genuinely beautiful. ❤️</p>
+    <button class="overlay-continue-btn" onclick="closeYesOverlay()">Continue to Valentine's Date →</button>
+  </div>
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- ============================================ -->
+  <!-- PAGE: VALENTINE                               -->
+  <!-- ============================================ -->
+  <main class="page" id="page-valentine">
+    <section class="page-section">
+      <div class="valentine-container">
+        <div class="section-header">
+          <span class="section-label">✦ Save The Date</span>
+          <h2 class="section-title">Valentine's Week 2027 🌹</h2>
+          <p class="section-subtitle">I want to meet you. I'll personally come to Delhi.</p>
+        </div>
+        <p class="valentine-intro">
+          I'd love to take you out on a proper date, no screens, no texts, just us. 
+          Pick a day that works for you during Valentine's Week, and I'll be there.
+        </p>
+        <div class="date-picker-card" id="datePickerCard">
+          <h3>Pick a day, pick a time ✨</h3>
+          <div class="date-options" id="dateOptions">
+            <div class="date-option" onclick="selectDate(this, '2027-02-07')" data-date="2027-02-07">
+              <div class="date-day">Feb 7</div>
+              <div class="date-label">Rose Day 🌹</div>
+              <div class="date-full">Sunday</div>
+            </div>
+            <div class="date-option" onclick="selectDate(this, '2027-02-08')" data-date="2027-02-08">
+              <div class="date-day">Feb 8</div>
+              <div class="date-label">Propose Day 💍</div>
+              <div class="date-full">Monday</div>
+            </div>
+            <div class="date-option" onclick="selectDate(this, '2027-02-09')" data-date="2027-02-09">
+              <div class="date-day">Feb 9</div>
+              <div class="date-label">Chocolate Day 🍫</div>
+              <div class="date-full">Tuesday</div>
+            </div>
+            <div class="date-option" onclick="selectDate(this, '2027-02-10')" data-date="2027-02-10">
+              <div class="date-day">Feb 10</div>
+              <div class="date-label">Teddy Day 🧸</div>
+              <div class="date-full">Wednesday</div>
+            </div>
+            <div class="date-option" onclick="selectDate(this, '2027-02-11')" data-date="2027-02-11">
+              <div class="date-day">Feb 11</div>
+              <div class="date-label">Promise Day 🤝</div>
+              <div class="date-full">Thursday</div>
+            </div>
+            <div class="date-option" onclick="selectDate(this, '2027-02-12')" data-date="2027-02-12">
+              <div class="date-day">Feb 12</div>
+              <div class="date-label">Hug Day 🤗</div>
+              <div class="date-full">Friday</div>
+            </div>
+            <div class="date-option" onclick="selectDate(this, '2027-02-13')" data-date="2027-02-13">
+              <div class="date-day">Feb 13</div>
+              <div class="date-label">Kiss Day 💋</div>
+              <div class="date-full">Saturday</div>
+            </div>
+            <div class="date-option" onclick="selectDate(this, '2027-02-14')" data-date="2027-02-14">
+              <div class="date-day">Feb 14</div>
+              <div class="date-label">Valentine's Day ❤️</div>
+              <div class="date-full">Sunday</div>
+            </div>
+          </div>
+          <div class="time-selector">
+            <label for="timeSelect">What time works best?</label>
+            <select id="timeSelect">
+              <option value="">Choose a time...</option>
+              <option value="10:00 AM">10:00 AM — Morning Coffee ☕</option>
+              <option value="12:00 PM">12:00 PM — Lunch Date 🍽️</option>
+              <option value="03:00 PM">3:00 PM — Afternoon Stroll 🌤️</option>
+              <option value="05:00 PM">5:00 PM — Evening Sunset 🌅</option>
+              <option value="07:00 PM">7:00 PM — Dinner Date 🕯️</option>
+              <option value="08:30 PM">8:30 PM — Late Night Vibes 🌙</option>
+            </select>
+          </div>
+          <button class="btn-confirm-date" id="btnConfirmDate" onclick="confirmDate()">
+            Confirm Our Date 🌹
+          </button>
+        </div>
+
+        <!-- Countdown appears after confirmation -->
+        <div class="countdown-container" id="countdownContainer">
+          <h3>Yay! Countdown Begins 🎉</h3>
+          <div class="countdown-date-display" id="countdownDateDisplay"></div>
+          <div class="countdown-grid">
+            <div class="countdown-unit">
+              <span class="value" id="countDays">00</span>
+              <span class="label">Days</span>
+            </div>
+            <div class="countdown-unit">
+              <span class="value" id="countHours">00</span>
+              <span class="label">Hours</span>
+            </div>
+            <div class="countdown-unit">
+              <span class="value" id="countMinutes">00</span>
+              <span class="label">Minutes</span>
+            </div>
+            <div class="countdown-unit">
+              <span class="value" id="countSeconds">00</span>
+              <span class="label">Seconds</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer (always visible) -->
+  <footer class="footer">
+    <p>Made with <span class="footer-heart">❤️</span> and a lot of hope — for Anushka</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
