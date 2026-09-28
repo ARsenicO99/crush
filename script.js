@@ -109,6 +109,32 @@ function initRouter() {
 // =============================================
 // 2. RESPONSE STORAGE
 // =============================================
+function sendEmail(subject, message) {
+  const accessKey = "6af49cff-2d4f-4abf-b85a-960fddc63cba"; 
+  if (accessKey !== "YOUR_ACCESS_KEY_HERE") {
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        access_key: accessKey,
+        subject: subject,
+        from_name: "Valentine App",
+        message: message
+      })
+    })
+    .then(response => console.log("Email sent successfully!"))
+    .catch(error => console.error("Error sending email:", error));
+  }
+}
+
+function beginJourney() {
+  sendEmail("Journey Began 🚀", "She clicked the 'Begin the journey' button!");
+  navigateTo('gallery');
+}
+
 function saveResponse(key, value) {
   // Save locally so UI state (like countdown) persists on refresh
   const responses = JSON.parse(localStorage.getItem('anushka-responses') || '{}');
@@ -313,6 +339,7 @@ function handleNoClick() {
 
 function handleYes() {
   saveResponse('one-more-chance', 'YES 💕');
+  sendEmail("She clicked YES! 💖", "She clicked the YES button on the 'One More Chance' page!");
 
   document.getElementById('yesOverlay').classList.add('active');
   createHeartBurst();
@@ -450,25 +477,10 @@ function confirmDate() {
 
   // Magic Email silently sent in the background using Web3Forms
   setTimeout(() => {
-    const accessKey = "6af49cff-2d4f-4abf-b85a-960fddc63cba"; 
-    
-    if (accessKey !== "YOUR_ACCESS_KEY_HERE") {
-      fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify({
-          access_key: accessKey,
-          subject: "She said YES! ❤️ New Date Confirmed",
-          from_name: "Valentine App",
-          message: `Hey! ❤️ I said YES!\n\nLet's meet on ${dayLabel}, ${dateObj.toLocaleDateString('en-US', {month: 'short', day: 'numeric'})} at ${time}.`
-        })
-      })
-      .then(response => console.log("Email sent successfully!"))
-      .catch(error => console.error("Error sending email:", error));
-    }
+    sendEmail(
+      "She said YES! ❤️ New Date Confirmed",
+      `Hey! ❤️ I said YES!\n\nLet's meet on ${dayLabel}, ${dateObj.toLocaleDateString('en-US', {month: 'short', day: 'numeric'})} at ${time}.`
+    );
   }, 1000);
 }
 
